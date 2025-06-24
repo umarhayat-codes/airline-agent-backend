@@ -1,20 +1,13 @@
 from fastapi import FastAPI
 
-# from routes.auth import auth_router
-# from routes.product import product_router
-from routes.air_line_route import air_agent_router
 
 from fastapi.middleware.cors import CORSMiddleware
 
+from routes.gmail_send_route import gmail_send_router
 
 app = FastAPI()
 
-#  "fastapi[standard] (>=0.115.6,<0.116.0)",
-#     "uvicorn (>=0.34.0,<0.35.0)",
-#     "pymongo (>=4.10.1,<5.0.0)",
-#     "python-dotenv (>=1.0.1,<2.0.0)",
-#     "passlib (>=1.7.4,<2.0.0)",
-# ]
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -25,9 +18,8 @@ app.add_middleware(
 )
 
 
-app.include_router(air_agent_router,prefix='/air-agent')
-# app.include_router(auth_router,prefix='/auth')
-# app.include_router(product_router,prefix='/product')
+app.include_router(gmail_send_router,prefix='/gmail-send')
+
 # from pydantic import BaseModel
 
 
